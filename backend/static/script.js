@@ -1,24 +1,4 @@
-let clickPoints = [];
-
-document.getElementById("loginImage").addEventListener("click", function (e) {
-  const rect = e.target.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-
-  clickPoints.push({ x: x, y: y });
-
-  const dot = document.createElement("div");
-  dot.style.position = "absolute";
-  dot.style.left = (x + rect.left) + "px";
-  dot.style.top = (y + rect.top) + "px";
-  dot.style.width = "8px";
-  dot.style.height = "8px";
-  dot.style.backgroundColor = "red";
-  dot.style.borderRadius = "50%";
-  dot.style.zIndex = "10";
-  dot.style.position = "fixed";
-  document.body.appendChild(dot);
-});
+const BASE_URL = "https://graphical-password-auth-from-riyaz.onrender.com";
 
 async function register() {
   const username = document.getElementById("username").value;
@@ -27,7 +7,7 @@ async function register() {
     return;
   }
 
-  const res = await fetch("/api/register", {
+  const res = await fetch(`${BASE_URL}/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, clickPoints }),
@@ -44,7 +24,7 @@ async function login() {
     return;
   }
 
-  const res = await fetch("/api/login", {
+  const res = await fetch(`${BASE_URL}/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, clickPoints }),
@@ -56,9 +36,4 @@ async function login() {
   } else {
     showStatus(data.message);
   }
-}
-
-function showStatus(msg) {
-  document.getElementById("statusMsg").textContent = msg;
-  clickPoints = [];
 }
