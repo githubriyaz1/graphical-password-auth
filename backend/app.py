@@ -2,6 +2,7 @@ from flask import Flask, send_from_directory
 from flask_cors import CORS
 from routes.auth import auth_routes
 from db import init_db
+import os
 
 # Create Flask app and serve static files
 app = Flask(__name__, static_folder='static', static_url_path='/static')
@@ -24,5 +25,7 @@ def serve_frontend():
 def serve_dashboard():
     return send_from_directory(app.static_folder, 'dashboard.html')
 
+# Run app (Render-friendly)
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)
