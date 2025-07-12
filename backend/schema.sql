@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    click_points TEXT NOT NULL
+);

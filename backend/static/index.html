@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Graphical Auth - Login/Register</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Graphical Password Auth</h1>
+    <input type="text" id="username" placeholder="Enter Username" />
+    
+    <div class="image-area">
+      <img src="/static/login-image.jpg" id="loginImage" alt="Click Image" />
+    </div>
+
+    <div class="buttons">
+      <button onclick="register()">Register</button>
+      <button onclick="login()">Login</button>
+    </div>
+    <p id="statusMsg"></p>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
